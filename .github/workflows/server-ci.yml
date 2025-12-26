@@ -32,6 +32,9 @@ jobs:
     steps:
       - name: Checkout mattermost project
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Apply limitless patch
+        run: patch -p1 < limitless.patch
+        working-directory: ${{ github.workspace }}
       - name: Calculate version
         id: calculate
         working-directory: server/
